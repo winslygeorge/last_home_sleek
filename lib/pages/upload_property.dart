@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../config/env.dart';
 import 'loading.dart';
 
 class UploadPropertyPage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _UploadPropertyPageState extends State<UploadPropertyPage> {
       _isLoading = true;
     });
 
-    final url = Uri.parse('${Env.API_BASE_URL}/api/properties');
+    final url = Uri.parse('${Env().API_BASE_URL}/api/properties');
     final payload = {
       "name": _nameController.text,
       "description": _descriptionController.text,

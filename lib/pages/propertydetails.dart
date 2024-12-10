@@ -4,7 +4,7 @@ import 'edit_property.dart'; // Import the edit property page
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'loading.dart';
-import 'package:envied/envied.dart';
+import '../config/env.dart';
 
 class PropertyDetailsPage extends StatelessWidget {
   final Map<String, dynamic> property;
@@ -13,7 +13,7 @@ class PropertyDetailsPage extends StatelessWidget {
 
   Future<void> _deleteProperty(BuildContext context) async {
     final url =
-        Uri.parse('${Env.API_BASE_URL}/api/properties/${property['id']}');
+        Uri.parse('${Env().API_BASE_URL}/api/properties/${property['id']}');
 
     try {
       final response = await http.delete(url, headers: {

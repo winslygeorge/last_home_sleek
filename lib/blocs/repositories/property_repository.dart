@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:envied/envied.dart';
+import 'package:helloworld/config/env.dart';
 import '../models/property_model.dart';
-import '../../env/env.dart';
 
 class PropertyRepository {
-  final String bUrl = Env.API_BASE_URL;
-  final String baseUrl = '/api/properties';
+  final String baseUrl = '${Env().API_BASE_URL}/api/properties';
   final Dio _dio = Dio();
 
   Future<List<Property>> fetchProperties() async {
-    final String bUrl = Env.getBaseUrl();
     final response = await _dio.get(baseUrl);
     return (response.data as List)
         .map((json) => Property.fromJson(json))

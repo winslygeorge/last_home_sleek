@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'loading.dart';
 import 'package:envied/envied.dart';
+import '../config/env.dart';
 
 class EditPropertyPage extends StatefulWidget {
   final Map<String, dynamic> property;
@@ -56,7 +57,7 @@ class _EditPropertyPageState extends State<EditPropertyPage> {
     });
 
     final url = Uri.parse(
-        '${Envied.enviroment['API_BASE_URL']}/api/properties/${widget.property['id']}');
+        '${Env().API_BASE_URL}/api/properties/${widget.property['id']}');
     final payload = {
       "name": _nameController.text,
       "description": _descriptionController.text,
